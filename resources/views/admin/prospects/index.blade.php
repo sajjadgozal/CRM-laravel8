@@ -3,12 +3,18 @@
 @section('content')
 <div class="container">
 
+    @if (session('success'))
+        <div class="alert alert-success mt-3">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="card mt-3">
         <div class="card-header">{{ __('Dashboard') }}</div>
+        
 
         <div class="card-body">
-            
+
             <div class="d-flex">
                 <h1>@lang('Prospects') <small>@lang('showing all prospects here.')</small></h1>
                 <div class="ml-auto">
@@ -25,10 +31,14 @@
                 </div>
             </div>
 
-
-            <hr>
-
             @if ($prospects->count())
+            {{ $prospects->links() }}
+                @foreach ($prospects as $prospect)
+                    @include('admin.prospects.partials.prospect-card' , ['prospect' => $prospect])
+                @endforeach 
+            @endif
+
+            {{-- @if ($prospects->count())
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -39,11 +49,18 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach ($prospects as $prospect)
+                            <tr>
+                                <td>{{ $prospect->name }}</td>
+                                <td>{{ $prospect->email }}</td>
+                                <td>{{ $prospect->created_time }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
-                </table>
-                
-            @endif
+                </table> 
+            @endif --}}
+
+
         </div>
     </div>
 </div>

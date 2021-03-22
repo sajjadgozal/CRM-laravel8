@@ -16,7 +16,7 @@ class ProspectController extends Controller
      */
     public function index()
     {
-        $prospects = Prospect::latest()->paginate(25);
+        $prospects = Prospect::latest()->paginate(1);
         
         return view('admin.prospects.index' , ['prospects' => $prospects]);
     }
@@ -52,7 +52,7 @@ class ProspectController extends Controller
 
         }
 
-        return redirect()->route('admin.prospects.dashboard')->with('success','successfully created a new Procpect');
+        return redirect()->route('admin.prospects.dashboard')->with('Success','successfully created a new Procpect');
 
     }
 
@@ -73,9 +73,9 @@ class ProspectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Prospect $prospect)
+    {   
+        return view('admin.prospects.edit' , compact('prospect'));
     }
 
     /**
