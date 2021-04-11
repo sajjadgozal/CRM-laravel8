@@ -15,7 +15,7 @@
 
         <div class="card-body">
 
-            <div class="d-flex">
+            <div class="d-flex"> 
                 <h1>@lang('Prospects') <small>@lang('showing all prospects here.')</small></h1>
                 <div class="ml-auto">
                     <div class="dropdown">

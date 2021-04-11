@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <h5>{{ $prospect->name }}</h5>
-                <ul>
+                <ul> 
                     <li>
                         <strong>@lang('Email'): </strong>{{ $prospect->email }}
                     </li>
